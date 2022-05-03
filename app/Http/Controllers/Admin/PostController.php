@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.posts.create");
     }
 
     /**
@@ -37,7 +37,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "title"=>"required|string|max:150",
+            "content"=>"required|string",
+            "published_at"=>"nullable|date|before_or_equal:today"
+
+        ]);
     }
 
     /**
