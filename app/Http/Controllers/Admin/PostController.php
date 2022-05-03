@@ -43,6 +43,18 @@ class PostController extends Controller
             "published_at"=>"nullable|date|before_or_equal:today"
 
         ]);
+
+        $data = $request->all();
+
+        $slug = Post::getUniqueSlug($data["title"]);
+
+        $post = new Post();
+        $post->fill($data);
+        $post->slug = $slug;
+
+        $post->save();
+
+        return redirect()->route("admin.posts.index");
     }
 
     /**
