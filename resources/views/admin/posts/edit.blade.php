@@ -12,6 +12,18 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="category_id">Categoria</label>
+                <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                  <option value="">-- nessuna --</option>
+                  @foreach ($categories as $category)
+                      <option {{old("category_id", optional($post->category)->id) == $category->id ? "selected" : "" }} value="{{$category->id}}">{{$category->name}}</option>
+                  @endforeach
+                </select>
+                @error('category_id')
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+              </div>
+            <div class="form-group">
                 <label for="content">Contenuto dell'articolo</label>
                 <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="3">{{old("content")?: $post->content}}</textarea> 
                 @error('content')
