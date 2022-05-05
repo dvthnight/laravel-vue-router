@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="container">
-        <form action="{{route("admin.posts.store")}}" method="POST">
-            @csrf  
+        <form action="{{route("admin.posts.update",$post)}}" method="POST">
+            @csrf
+            @method("PUT")  
             <div class="form-group">
                 <label for="title">Titolo</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{old("title") ?: $post->title}}" placeholder="Inserisci il titolo">
@@ -22,7 +23,19 @@
                 @error('category_id')
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
-              </div>
+            </div>
+
+            <label>Tags:</label>
+            @foreach ($tags as $tag)
+                <div class="form-check">
+                    <input type="checkbox" {{$post->tags->contains($tag) ? "checked" : ""}} class="text-danger" value="{{$tag->id}}" name="tags[]" id="tags-{{$tag->id}}">
+                    <label class="form-check-label" for="tags-{{$tag->id}}">{{$tag->name}}</label>
+                </div>
+            @endforeach
+            @error('tags')
+                <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+
             <div class="form-group">
                 <label for="content">Contenuto dell'articolo</label>
                 <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="3">{{old("content")?: $post->content}}</textarea> 
