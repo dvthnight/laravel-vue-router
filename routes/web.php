@@ -25,3 +25,8 @@ Route::middleware('auth')->name('admin.')->namespace("Admin")->prefix('admin')->
     Route::get('/contact', 'HomeController@index')->name("contact");
     Route::resource("posts","PostController");
 });
+
+
+Route::get('{any?}', function () {
+    return view("guest.home");
+})->where("any",".*");
