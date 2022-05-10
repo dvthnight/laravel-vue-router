@@ -20,7 +20,7 @@ import PostCard from "../components/PostCard.vue"
         methods: {
             fetchPosts(){
                 axios.get("/api/posts")
-                .then( res=>{
+                .then( res => {
                     this.posts = res.data.posts.data
                 })
                 .catch( err => {
