@@ -7,6 +7,7 @@
             <ul class="flex gap-4 flex-wrap items-center">
                 <li class="bg-gradient-to-r from-rose-400 via-pink-500 to-fuchsia-600 block px-4 py-0.5  rounded-full text-xs" v-for="tag in post.tags" :key="tag.id">{{tag.name}}</li>
             </ul>
+            <router-link tag="button" :to="{name: 'posts.show', params: {slug: post.slug}}">Leggi</router-link>
         </div>
     </div>
 </template>
