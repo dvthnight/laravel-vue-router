@@ -1960,6 +1960,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3146,7 +3149,8 @@ var render = function () {
   return _c(
     "div",
     {
-      staticClass: "post rounded-lg  border-4 border-pink-600 overflow-hidden",
+      staticClass:
+        "post rounded-lg  border-4 border-sky-700/60 shadow-lg shadow-sky-700/50 overflow-hidden",
     },
     [
       _c("img", {
@@ -3160,9 +3164,14 @@ var render = function () {
         ]),
         _vm._v(" "),
         _vm.post.category
-          ? _c("p", { staticClass: "text-purple-400 mb-2" }, [
-              _vm._v(_vm._s(_vm.post.category.name)),
-            ])
+          ? _c(
+              "p",
+              {
+                staticClass:
+                  "w-20 text-center text-sm bg-purple-400 rounded mb-4",
+              },
+              [_vm._v(_vm._s(_vm.post.category.name))]
+            )
           : _vm._e(),
         _vm._v(" "),
         _c(
@@ -3207,18 +3216,28 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "app bg-sky-900 text-white" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("PostsGrid"),
-      _vm._v(" "),
-      _c("footer", [_vm._v("\n        © Footer 2022\n    ")]),
-    ],
-    1
-  )
+  return _c("div", { staticClass: "app bg-slate-800 text-white" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "main",
+      [
+        _c(
+          "h1",
+          {
+            staticClass:
+              "text-7xl uppercase font-bold text-center my-11 bg-clip-text text-transparent bg-gradient-to-r from-rose-700 via-fuchsia-700 to-violet-700 shadow-lg shadow-fuchsia-800/50",
+          },
+          [_vm._v("Elenco dei Post")]
+        ),
+        _vm._v(" "),
+        _c("PostsGrid"),
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("footer", [_vm._v("\n        © Footer 2022\n    ")]),
+  ])
 }
 var staticRenderFns = [
   function () {
