@@ -10,7 +10,7 @@
             </nav>
         </header>
         <main>
-            <h1 class="text-7xl uppercase font-bold text-center my-11 bg-clip-text text-transparent bg-gradient-to-r from-rose-700 via-fuchsia-700 to-violet-700 shadow-lg shadow-fuchsia-800/50">Elenco dei Post</h1>
+            <h1 class="text-7xl uppercase font-bold text-center my-11 bg-clip-text text-transparent bg-gradient-to-r from-rose-700 via-fuchsia-700 to-violet-700">Elenco dei Post</h1>
             <PostsGrid/>
         </main>
         <footer>

@@ -3168,7 +3168,7 @@ var render = function () {
               "p",
               {
                 staticClass:
-                  "w-20 text-center text-sm bg-purple-400 rounded mb-4",
+                  "w-20 text-center text-sm  bg-purple-500 rounded mb-4",
               },
               [_vm._v(_vm._s(_vm.post.category.name))]
             )
@@ -3183,7 +3183,7 @@ var render = function () {
               {
                 key: tag.id,
                 staticClass:
-                  "bg-gradient-to-r from-rose-400 via-pink-500 to-fuchsia-600 block px-4  rounded-full text-xs",
+                  "bg-gradient-to-r from-rose-400 via-pink-500 to-fuchsia-600 block px-4 py-0.5  rounded-full text-xs",
               },
               [_vm._v(_vm._s(tag.name))]
             )
@@ -3226,7 +3226,7 @@ var render = function () {
           "h1",
           {
             staticClass:
-              "text-7xl uppercase font-bold text-center my-11 bg-clip-text text-transparent bg-gradient-to-r from-rose-700 via-fuchsia-700 to-violet-700 shadow-lg shadow-fuchsia-800/50",
+              "text-7xl uppercase font-bold text-center my-11 bg-clip-text text-transparent bg-gradient-to-r from-rose-700 via-fuchsia-700 to-violet-700",
           },
           [_vm._v("Elenco dei Post")]
         ),
