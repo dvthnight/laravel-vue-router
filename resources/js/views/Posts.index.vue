@@ -21,8 +21,7 @@ import PostCard from "../components/PostCard.vue"
             fetchPosts(){
                 axios.get("/api/posts")
                 .then( res=>{
-                    const {posts} = res.data
-                    this.posts = posts
+                    this.posts = res.data.posts.data
                 })
                 .catch( err => {
                     console.warn(err)
