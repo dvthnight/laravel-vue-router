@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app bg-sky-900 text-white">
         <header>
             <nav>
                 <ul>
@@ -26,5 +26,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .app{
+        min-heght: 100vh;
+    }
 </style>

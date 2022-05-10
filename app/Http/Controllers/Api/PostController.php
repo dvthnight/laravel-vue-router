@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::with(["category","tags"])->where("published_at","!=",null)
         ->orderBy("published_at","desc")
-        ->paginate(24);
+        ->limit(15)->get();
 
         return response()->json([
             "posts" => $posts,
