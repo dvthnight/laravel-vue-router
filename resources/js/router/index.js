@@ -3,7 +3,14 @@ import VueRouter from  "vue-router"
 
 Vue.use(VueRouter)
 
-const routes = []
+import Posts from "../pages/Posts.index.vue"
+
+const routes = [
+    {
+        path: "/posts",
+        component: Posts,
+    }
+]
 
 const router = new VueRouter({
     mode:"history",

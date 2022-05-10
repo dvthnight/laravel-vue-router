@@ -9,10 +9,7 @@
                 </ul>
             </nav>
         </header>
-        <main>
-            <h1 class="text-7xl uppercase font-bold text-center my-11 bg-clip-text text-transparent bg-gradient-to-r from-rose-700 via-fuchsia-700 to-violet-700">Elenco dei Post</h1>
-            <PostsGrid/>
-        </main>
+            <router-view></router-view>
         <footer>
             &copy; Footer 2022
         </footer>
@@ -20,7 +17,7 @@
 </template>
 
 <script>
-    import PostsGrid from "./Posts.index.vue"
+    import PostsGrid from "../pages/Posts.index.vue"
     export default {
         components:{
             PostsGrid,
@@ -30,6 +27,6 @@
 
 <style lang="scss" scoped>
     .app{
-        min-heght: 100vh;
+        min-height: 100vh;
     }
 </style>
