@@ -1987,8 +1987,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      post: null
+    };
+  },
   beforeMount: function beforeMount() {
-    axios.get("/api/posts/".concat(this.$route.params.slug));
+    var _this = this;
+
+    axios.get("/api/posts/".concat(this.$route.params.slug)).then(function (res) {
+      var post = res.data.post;
+      _this.post = post;
+    })["catch"](function (err) {
+      console.warn(err);
+    });
   }
 });
 
@@ -14240,13 +14252,13 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v(
-      "\n    Pagina di dettaglio del post " +
-        _vm._s(_vm.$route.params.slug) +
-        "\n"
-    ),
-  ])
+  return _vm.post
+    ? _c("div", [
+        _vm._v(
+          "\n    Pagina di dettaglio del post " + _vm._s(_vm.post.title) + "\n"
+        ),
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
