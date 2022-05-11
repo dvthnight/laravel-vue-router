@@ -4,6 +4,11 @@
         <div class="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
             <PostCard v-for="post in posts" :key="post.id" :post="post"/>
         </div>
+        <div class="container">
+            <ul class="pagination flex justify-center gap-4 items-center">
+                <li @click="fetchPosts(n)" :class="[currentPage === n ? 'text-orange-400': 'text-white','dot cursor-pointer py-10']" v-for="n in lastPage" :key="n">{{n}}</li>
+            </ul>
+        </div>
     </main>
     
 </template>
@@ -17,14 +22,26 @@ import PostCard from "../components/PostCard.vue"
 
         data(){
             return{
-                posts: []
+                posts: [],
+                last_page: 0,
+                current_page: 1,
+
             }
         },
         methods: {
-            fetchPosts(){
-                axios.get("/api/posts")
+            fetchPosts(page = 1){
+                axios.get("/api/posts",{
+                    params:{
+                        page
+
+                    }
+                })
                 .then( res => {
-                    this.posts = res.data.posts.data
+                    const{posts} = res.data
+                    const {data, last_page, current_page} = posts
+                    this.posts = data
+                    this.currentPage = current_page
+                    this.lastPage = last_page
                 })
                 .catch( err => {
                     console.warn(err)
