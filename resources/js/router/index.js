@@ -7,7 +7,7 @@ import Posts from "../pages/Posts.index.vue"
 import Post from "../pages/Post.show.vue"
 import Contact from "../pages/Contact.index.vue"
 import Categories from "../pages/Categories.index.vue"
-import { post } from "jquery"
+import NotFound from "../pages/404.vue"
 
 const routes = [
     {
@@ -26,7 +26,11 @@ const routes = [
     {
         path: "/categories",
         component: Categories
-    }
+    },
+    {
+        path: "/*",
+        component: NotFound
+    },
 ]
 
 const router = new VueRouter({
