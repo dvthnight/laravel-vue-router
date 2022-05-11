@@ -1986,21 +1986,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      post: null
+      post: null,
+      loading: true
     };
   },
-  beforeMount: function beforeMount() {
-    var _this = this;
+  methods: {
+    fetchPost: function fetchPost() {
+      var _this = this;
 
-    axios.get("/api/posts/".concat(this.$route.params.slug)).then(function (res) {
-      var post = res.data.post;
-      _this.post = post;
-    })["catch"](function (err) {
-      console.warn(err);
-    });
+      axios.get("/api/posts/".concat(this.$route.params.slug)).then(function (res) {
+        var post = res.data.post;
+        _this.post = post;
+        _this.loading = false;
+      })["catch"](function (err) {
+        console.warn(err);
+      });
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.fetchPost();
   }
 });
 
@@ -14252,11 +14272,48 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.post
+  return !_vm.loading
     ? _c("div", [
-        _vm._v(
-          "\n    Pagina di dettaglio del post " + _vm._s(_vm.post.title) + "\n"
-        ),
+        _c("img", {
+          staticClass: "w-full ",
+          attrs: { src: "https://picsum.photos/id/237/1920/450", alt: "" },
+        }),
+        _vm._v(" "),
+        _c("section", [
+          _c("div", { staticClass: "max-w-[1080px] mx-auto py-10" }, [
+            _c("h1", { staticClass: "text-3xl" }, [
+              _vm._v(_vm._s(_vm.post.title)),
+            ]),
+            _vm._v(" "),
+            _vm.post.category
+              ? _c("p", {}, [_vm._v(_vm._s(_vm.post.category.name))])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "flex gap-3 items-center" },
+              _vm._l(_vm.post.tags, function (tag) {
+                return _c("li", { key: tag.id }, [_vm._v(_vm._s(tag.name))])
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "py-12",
+                domProps: { innerHTML: _vm._s(_vm.post.content) },
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.post.content) +
+                    "\n            "
+                ),
+              ]
+            ),
+          ]),
+        ]),
       ])
     : _vm._e()
 }

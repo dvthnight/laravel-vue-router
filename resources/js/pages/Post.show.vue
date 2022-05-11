@@ -1,6 +1,19 @@
 <template>
-    <div v-if="post">
-        Pagina di dettaglio del post {{post.title}}
+    <div v-if="!loading">
+        <img src="https://picsum.photos/id/237/1920/450" class="w-full " alt="">
+        <section>
+            <div class="max-w-[1080px] mx-auto py-10">
+                <h1 class="text-3xl">{{post.title}}</h1>
+                <p class="" v-if="post.category">{{post.category.name}}</p>
+                <ul class="flex gap-3 items-center">
+                    <li v-for="tag in post.tags" :key="tag.id">{{tag.name}}</li>
+                </ul>
+                <div class="py-12" v-html="post.content">
+                    {{post.content}}
+                </div>
+            </div>
+        </section>
+        
     </div>
 </template>
 
@@ -8,19 +21,26 @@
     export default {
         data(){
             return {
-                post: null
+                post: null,
+                loading: true
             }
         },
-        beforeMount(){
-
+        methods:{
+           fetchPost(){
             axios.get(`/api/posts/${this.$route.params.slug}`)
             .then( res=> {
                 const {post} = res.data
                 this.post = post
+                this.loading = false
             })
             .catch(err=>{
                 console.warn(err)
             })
+           }
+        },
+        beforeMount(){
+            this.fetchPost()
+            
         }
     }
 </script>
